@@ -1,0 +1,37 @@
+/* survey.css */
+
+/* Style for the form container */
+.survey-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Style for the question label */
+  .survey-question {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the select dropdown */
+  .survey-select {
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the submit button */
+  .survey-submit {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .survey-submit:hover {
+    background-color: #0056b3;
+  }

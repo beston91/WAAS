@@ -15,7 +15,7 @@ const Settings = ({setOpen, workMin, breakMin, setBreakMin, setWorkMin}) => {
         <>
             <Card>
                 <Text className="text-center text-white">
-                    Focus time (in minutes): 45 {workMin}
+                    WAAS time (in minutes): 45 {workMin}
                 </Text>
                 <ReactSlider
                     className="horizontal-slider mt-2 border border-tertiary rounded-3xl h-10"

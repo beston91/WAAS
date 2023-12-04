@@ -5,7 +5,7 @@ import Button from '../components/elements/Button';
 import Time from '../components/widgets/Time';
 import Settings from '../components/widgets/Settings';
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from '../firebase';
+import { auth, getSurveyStatus} from '../firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from '../store/features/userSlice';
 import { notesFetch } from '../store/features/noteSlice';
@@ -14,39 +14,39 @@ import Pomodoro from '../components/widgets/Pomodoro';
 // import { getAllUserNotes } from '../store/features/noteSlice';
 
 const Home = () => {
-
     const user = useSelector((state) => state.user.value);
+    console.log(user)
     const { value, status } = useSelector((state) => state.note);
-    
     const dispatch = useDispatch();
-
     const navigate = useNavigate();
 
-
-    useEffect(() => {      
-
-        const intervalID = setInterval(() => {
-            // console.log("yes")
-        }, 1000)
-
-        return () => clearInterval(intervalID);
-    }, [])
 
     useEffect(() => {
         dispatch(getCurrentUser());
     }, [dispatch])
-    // console.log("user here: ", user.uid);
 
+    // useEffect(() => {
+    //     dispatch(notesFetch(user.uid))
+    // }, [dispatch, user.uid])
+
+    // Check if the user has completed the survey on component mount
     useEffect(() => {
-        dispatch(notesFetch(user.uid))
-    }, [dispatch, user.uid])
-
+        // Replace this with actual logic to fetch the survey status
+        const fetchSurveyStatus = async () => {
+            // Fetch the survey status from your backend
+            const surveyStatus = await getSurveyStatus(user);
+            if (!surveyStatus) {
+                navigate('/survey');
+            } 
+        };
+        fetchSurveyStatus();
+    }, [user]);
 
     return (
         <section className="text-white pt-10 pb-24 px-3  md:pt-10 md:pb-20">
 
             <section className="grid grid-cols-1 space-y-6 md:space-y-0 md:gap-4">
-                <Pomodoro />
+                {/* <Pomodoro /> */}
 
                 {/* notes */}
                 <Card className="py-4 col-span-2">
